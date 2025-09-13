@@ -103,7 +103,7 @@ class SLatMeshDecoder(SparseTransformerBase):
         )
         self.resolution = resolution
         self.rep_config = representation_config
-        self.mesh_extractor = SparseFeatures2Mesh(res=self.resolution*4, use_color=self.rep_config.get('use_color', False))
+        self.mesh_extractor = SparseFeatures2Mesh(res=self.resolution*4, use_color=self.rep_config.get('use_color', False),enable_multi_gpu=True)
         self.out_channels = self.mesh_extractor.feats_channels
         self.upsample = nn.ModuleList([
             SparseSubdivideBlock3d(
